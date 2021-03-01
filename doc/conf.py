@@ -67,7 +67,7 @@ html_theme_options = {
     'navbar_links': [
         ("Examples", "auto_examples/index"),
         ("API", "api"),
-        ("GitHub", "https://github.com/hcherkaoui/hemolearn", True)
+        ("GitHub", "https://github.com/hemolearn/hemolearn", True)
     ],
     'bootswatch_theme': "united"
 }
