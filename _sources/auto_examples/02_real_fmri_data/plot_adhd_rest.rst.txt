@@ -101,7 +101,7 @@ dataset resting-state.
 
     /home/hcherkaoui/.local/lib/python3.6/site-packages/nilearn/datasets/func.py:439: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
       dtype=None)
-    Seed used = 410
+    Seed used = 427
 
 
 
@@ -133,7 +133,6 @@ dataset resting-state.
 
  .. code-block:: none
 
-    WARNING:root:[MemorizedFunc(func=<function multi_runs_learn_u_z_v_multi at 0x7f3d972f50d0>, location=__cache__/joblib)]: Clearing function cache identified by hemolearn/learn_u_z_v_multi/multi_runs_learn_u_z_v_multi
     ________________________________________________________________________________
     [Memory] Calling hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi...
     multi_runs_learn_u_z_v_multi(X=array([[ 0.256382, ...,  0.233928],
@@ -152,9 +151,9 @@ dataset resting-state.
       10: array([7025, 7033, 7368, 7369, 7370, 7371, 7377, 7378, 7379, 7380, 7381,
            7390, 7391, 7392, 7393, 7696, 7697, 7698, 7699, 7700, 7701, 7704,
            7705, 7706, 7707, 7708, 7709, 7710, 7714, 7715, 7716, 7717]),
-      11: array..., hrf_model='scaled_hrf', deactivate_v_learning=False, deactivate_z_learning=False, n_atoms=10, n_times_atom=20, prox_z='tv', lbda_strategy='ratio', lbda=0.9, rho=2.0, delta_init=1.0, u_init_type='ica', z_init=None, prox_u='l1-positive-simplex', max_iter=50, get_obj=1, get_time=1, random_seed=410, early_stopping=True, eps=0.001, raise_on_increase=True, verbose=0, n_jobs=1, nb_fit_try=1)
-    ____________________________________multi_runs_learn_u_z_v_multi - 90.3s, 1.5min
-    Fitting done in 00 h 01 min 30 s
+      11: array..., hrf_model='scaled_hrf', deactivate_v_learning=False, deactivate_z_learning=False, n_atoms=10, n_times_atom=20, prox_z='tv', lbda_strategy='ratio', lbda=0.9, rho=2.0, delta_init=1.0, u_init_type='ica', z_init=None, prox_u='l1-positive-simplex', max_iter=50, get_obj=1, get_time=1, random_seed=427, early_stopping=True, eps=0.001, raise_on_increase=True, verbose=0, n_jobs=1, nb_fit_try=1)
+    ____________________________________multi_runs_learn_u_z_v_multi - 95.7s, 1.6min
+    Fitting done in 00 h 01 min 35 s
 
 
 
@@ -279,7 +278,7 @@ dataset resting-state.
 
 
 .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_011.png
-    :alt: Atom-1 (explained variance = 3.11e-02), Atom-2 (explained variance = 2.12e-02), Atom-3 (explained variance = 1.98e-02), Atom-4 (explained variance = 1.94e-02), Atom-5 (explained variance = 1.91e-02), Atom-6 (explained variance = 1.85e-02), Atom-7 (explained variance = 1.81e-02), Atom-8 (explained variance = 1.77e-02), Atom-9 (explained variance = 1.73e-02), Atom-10 (explained variance = 1.70e-02)
+    :alt: Atom-1 (explained variance = 3.44e-02), Atom-2 (explained variance = 2.32e-02), Atom-3 (explained variance = 2.28e-02), Atom-4 (explained variance = 2.16e-02), Atom-5 (explained variance = 2.06e-02), Atom-6 (explained variance = 1.87e-02), Atom-7 (explained variance = 1.70e-02), Atom-8 (explained variance = 1.67e-02), Atom-9 (explained variance = 1.66e-02), Atom-10 (explained variance = 1.44e-02)
     :class: sphx-glr-single-img
 
 
@@ -324,7 +323,7 @@ dataset resting-state.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  45.535 seconds)
+   **Total running time of the script:** ( 1 minutes  51.031 seconds)
 
 
 .. _sphx_glr_download_auto_examples_02_real_fmri_data_plot_adhd_rest.py:
