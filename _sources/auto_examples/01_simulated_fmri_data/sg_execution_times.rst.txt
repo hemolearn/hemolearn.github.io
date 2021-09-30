@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_01_simulated_fmri_data_sg_execution_times:
+
+Computation times
+=================
+**00:03.768** total execution time for **auto_examples_01_simulated_fmri_data** files:
+
++----------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_01_simulated_fmri_data_plot_simulated_bold.py` (``plot_simulated_bold.py``) | 00:03.768 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------+-----------+--------+
