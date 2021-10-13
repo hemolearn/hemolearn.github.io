@@ -133,7 +133,7 @@ fMRI data.
 
  .. code-block:: none
 
-    [Decomposition] Best fitting: 1
+    [Decomposition] Best fitting: 4
     Fitting done in 00 h 00 min 03 s
 
 
@@ -318,7 +318,7 @@ fMRI data.
 
  .. code-block:: none
 
-    Script runs in 00 h 00 min 04 s
+    Script runs in 00 h 00 min 03 s
 
 
 
@@ -326,7 +326,7 @@ fMRI data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.028 seconds)
+   **Total running time of the script:** ( 0 minutes  3.756 seconds)
 
 
 .. _sphx_glr_download_auto_examples_01_basic_functionalities_plot_simulated_bold.py:
