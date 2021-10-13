@@ -117,7 +117,8 @@ to download the full example code</p>
 
 <span class="kn">from</span> <span class="nn">hemolearn.simulated_data</span> <span class="kn">import</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.simulated_data.simulated_data.html#hemolearn.simulated_data.simulated_data" title="hemolearn.simulated_data.simulated_data" class="sphx-glr-backref-module-hemolearn-simulated_data sphx-glr-backref-type-py-function"><span class="n">simulated_data</span></a>
 <span class="kn">from</span> <span class="nn">hemolearn.utils</span> <span class="kn">import</span> <span class="n">get_unique_dirname</span>
-<span class="kn">from</span> <span class="nn">hemolearn.learn_u_z_v_multi</span> <span class="kn">import</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi.html#hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi" title="hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi" class="sphx-glr-backref-module-hemolearn-learn_u_z_v_multi sphx-glr-backref-type-py-function"><span class="n">multi_runs_learn_u_z_v_multi</span></a>
+<span class="kn">from</span> <span class="nn">hemolearn.deconvolution</span> <span class="kn">import</span> \
+                                <span class="n">multi_runs_blind_deconvolution_single_subject</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dirname</span> <span class="o">=</span> <span class="n">get_unique_dirname</span><span class="p">(</span><span class="s2">&quot;results_slrda_simu_curve_#&quot;</span><span class="p">)</span>
@@ -148,7 +149,7 @@ to download the full example code</p>
         <span class="k">for</span> <span class="n">lbda</span> <span class="ow">in</span> <span class="n">lbdas</span><span class="p">:</span>
 
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi.html#hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi" title="hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi" class="sphx-glr-backref-module-hemolearn-learn_u_z_v_multi sphx-glr-backref-type-py-function"><span class="n">multi_runs_learn_u_z_v_multi</span></a><span class="p">(</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">multi_runs_blind_deconvolution_single_subject</span><span class="p">(</span>
                         <span class="n">noisy_X</span><span class="p">,</span> <span class="n">t_r</span><span class="o">=</span><span class="n">TR</span><span class="p">,</span> <span class="n">hrf_rois</span><span class="o">=</span><span class="n">hrf_rois</span><span class="p">,</span> <span class="n">n_atoms</span><span class="o">=</span><span class="n">n_atoms</span><span class="p">,</span>
                         <span class="n">deactivate_v_learning</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">prox_u</span><span class="o">=</span><span class="s1">&#39;l1-positive-simplex&#39;</span><span class="p">,</span>

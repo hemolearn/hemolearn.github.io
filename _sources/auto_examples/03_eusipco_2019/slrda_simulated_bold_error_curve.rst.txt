@@ -28,7 +28,7 @@ Example to obtain the estimation error of each parameter of the model.
     :depth: 1
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-26
+.. GENERATED FROM PYTHON SOURCE LINES 12-27
 
 .. code-block:: default
 
@@ -43,11 +43,12 @@ Example to obtain the estimation error of each parameter of the model.
 
     from hemolearn.simulated_data import simulated_data
     from hemolearn.utils import get_unique_dirname
-    from hemolearn.learn_u_z_v_multi import multi_runs_learn_u_z_v_multi
+    from hemolearn.deconvolution import \
+                                    multi_runs_blind_deconvolution_single_subject
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-32
+.. GENERATED FROM PYTHON SOURCE LINES 28-33
 
 .. code-block:: default
 
@@ -57,7 +58,7 @@ Example to obtain the estimation error of each parameter of the model.
         os.makedirs(dirname)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-128
+.. GENERATED FROM PYTHON SOURCE LINES 34-129
 
 .. code-block:: default
 
@@ -85,7 +86,7 @@ Example to obtain the estimation error of each parameter of the model.
             for lbda in lbdas:
 
                 try:
-                    results = multi_runs_learn_u_z_v_multi(
+                    results = multi_runs_blind_deconvolution_single_subject(
                             noisy_X, t_r=TR, hrf_rois=hrf_rois, n_atoms=n_atoms,
                             deactivate_v_learning=True,
                             prox_u='l1-positive-simplex',
@@ -157,7 +158,7 @@ Example to obtain the estimation error of each parameter of the model.
                                         mean_min_u_err, std_min_u_err, delta_t))
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-137
+.. GENERATED FROM PYTHON SOURCE LINES 130-138
 
 .. code-block:: default
 
@@ -170,7 +171,7 @@ Example to obtain the estimation error of each parameter of the model.
         pickle.dump(res, pfile)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-155
+.. GENERATED FROM PYTHON SOURCE LINES 139-156
 
 .. code-block:: default
 
@@ -192,7 +193,7 @@ Example to obtain the estimation error of each parameter of the model.
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-171
+.. GENERATED FROM PYTHON SOURCE LINES 157-172
 
 .. code-block:: default
 
@@ -212,7 +213,7 @@ Example to obtain the estimation error of each parameter of the model.
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-185
+.. GENERATED FROM PYTHON SOURCE LINES 173-186
 
 .. code-block:: default
 

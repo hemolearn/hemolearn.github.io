@@ -19,8 +19,6 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cite our work" href="../bibliography.html" />
-    <link rel="prev" title="hemolearn.utils.fmri_preprocess" href="hemolearn.utils.fmri_preprocess.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -64,10 +62,10 @@
      href="../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
+      aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../model.html">Model description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">HemoLearn usage examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Cite our work</a></li>
 </ul>
 </ul>
@@ -100,24 +98,6 @@
       
   <div class="section" id="hemolearn-utils-sort-atoms-by-explained-variances">
 <h1>hemolearn.utils.sort_atoms_by_explained_variances<a class="headerlink" href="#hemolearn-utils-sort-atoms-by-explained-variances" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="hemolearn.utils.sort_atoms_by_explained_variances">
-<code class="sig-prename descclassname">hemolearn.utils.</code><code class="sig-name descname">sort_atoms_by_explained_variances</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">hrf_rois</span></em><span class="sig-paren">)</span><a class="headerlink" href="#hemolearn.utils.sort_atoms_by_explained_variances" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sorted the temporal the spatial maps and the associated activation by
-explained variance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>u</strong><span class="classifier">array, shape (n_atoms, n_voxels), spatial maps</span></dt><dd></dd>
-<dt><strong>z</strong><span class="classifier">array, shape (n_atoms, n_times_valid), temporal components</span></dt><dd></dd>
-<dt><strong>v</strong><span class="classifier">array, shape (n_hrf_rois, n_times_atom), HRFs</span></dt><dd></dd>
-<dt><strong>hrf_rois</strong><span class="classifier">dict (key: ROIs labels, value: indices of voxels of the ROI)</span></dt><dd><p>atlas HRF</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 
 

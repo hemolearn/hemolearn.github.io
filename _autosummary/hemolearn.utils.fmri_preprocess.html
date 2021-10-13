@@ -19,8 +19,6 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hemolearn.utils.sort_atoms_by_explained_variances" href="hemolearn.utils.sort_atoms_by_explained_variances.html" />
-    <link rel="prev" title="hemolearn.plotting.plotting_temporal_comp" href="hemolearn.plotting.plotting_temporal_comp.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -64,10 +62,10 @@
      href="../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
+      aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../model.html">Model description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">HemoLearn usage examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Cite our work</a></li>
 </ul>
 </ul>
@@ -100,73 +98,6 @@
       
   <div class="section" id="hemolearn-utils-fmri-preprocess">
 <h1>hemolearn.utils.fmri_preprocess<a class="headerlink" href="#hemolearn-utils-fmri-preprocess" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="hemolearn.utils.fmri_preprocess">
-<code class="sig-prename descclassname">hemolearn.utils.</code><code class="sig-name descname">fmri_preprocess</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func_fname</span></em>, <em class="sig-param"><span class="n">mask_img</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sessions</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">smoothing_fwhm</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">standardize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">detrend</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">low_pass</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">high_pass</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t_r</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_affine</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mask_strategy</span><span class="o">=</span><span class="default_value">'background'</span></em>, <em class="sig-param"><span class="n">mask_args</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_mask</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">memory_level</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">memory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">confounds</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">preproc_fname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#hemolearn.utils.fmri_preprocess" title="Permalink to this definition">¶</a></dt>
-<dd><p>Preprocess the fMRI data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>func_fname</strong><span class="classifier">str, the filename of the fMRI data</span></dt><dd></dd>
-<dt><strong>mask_img</strong><span class="classifier">Nifti-like img or None, (default=None),</span></dt><dd></dd>
-<dt><strong>sessions</strong><span class="classifier">array or None, (default=None), add a session level to the</span></dt><dd><p>preprocessing</p>
-</dd>
-<dt><strong>smoothing_fwhm</strong><span class="classifier">float or None, (default=None), if smoothing_fwhm is not</span></dt><dd><p>None, it gives the full-width half maximum in millimeters of the
-spatial smoothing to apply to the signal.</p>
-</dd>
-<dt><strong>standardize</strong><span class="classifier">bool, (default=False), if standardize is True, the</span></dt><dd><p>time-series are centered and normed: their mean is put to 0 and their
-variance to 1 in the time dimension.</p>
-</dd>
-<dt><strong>detrend</strong><span class="classifier">bool, (defaul==False), whether or not to detrend the BOLD signal</span></dt><dd></dd>
-<dt><strong>low_pass</strong><span class="classifier">float or None, (defaul==None), the limit low freq pass band to</span></dt><dd><p>clean the BOLD signal</p>
-</dd>
-<dt><strong>high_pass</strong><span class="classifier">float or None, (default=None), the limit high freq pass band to</span></dt><dd><p>clean the BOLD signal</p>
-</dd>
-<dt><strong>t_r</strong><span class="classifier">float or None, (default=None), Time of Repetition, fMRI acquisition</span></dt><dd><p>parameter, the temporal resolution</p>
-</dd>
-<dt><strong>target_affine</strong><span class="classifier">3x3 or 4x4 array or None, (default=None), this parameter</span></dt><dd><p>is passed to nilearn.image.resample_img</p>
-</dd>
-<dt><strong>target_shape</strong><span class="classifier">3-tuple of integers or None, (default=None),this parameter</span></dt><dd><p>is passed to nilearn.image.resample_img</p>
-</dd>
-<dt><strong>mask_strategy</strong><span class="classifier">{‘background’, ‘epi’ or ‘template’},</span></dt><dd><p>(default=’background’), the strategy used to compute the mask: use
-‘background’ if your images present a clear homogeneous background,
-‘epi’ if they are raw EPI images, or you could use ‘template’ which
-will extract the gray matter part of your data by resampling the MNI152
-brain mask for your data’s field of view. Depending on this value, the
-mask will be computed from nilearn.masking.compute_background_mask,
-masking.compute_epi_mask or nilearn.masking.compute_gray_matter_mask.</p>
-</dd>
-<dt><strong>mask_args</strong><span class="classifier">dict, (default=None), if mask is None, these are additional</span></dt><dd><p>parameters passed to masking.compute_background_mask or
-nilearn.masking.compute_epi_mask to fine-tune mask computation. Please
-see the related documentation for details.</p>
-</dd>
-<dt><strong>sample_mask</strong><span class="classifier">Any type compatible with numpy-array indexing,</span></dt><dd><p>(default=None), any type compatible with numpy-array indexing Masks the
-niimgs along time/fourth dimension. This complements 3D masking by the
-mask_img argument. This masking step is applied before data
-preprocessing at the beginning of NiftiMasker.transform. This is useful
-to perform data subselection as part of a scikit-learn pipeline.</p>
-</dd>
-<dt><strong>dtype</strong><span class="classifier">{dtype, “auto”} or None, (default=None), data type toward which</span></dt><dd><p>the data should be converted. If “auto”, the data will be converted to
-int32 if dtype is discrete and float32 if it is continuous.</p>
-</dd>
-<dt><strong>memory</strong><span class="classifier">instance of joblib.Memory or str, (default=None), used to cache</span></dt><dd><p>the masking process. By default, no caching is done. If a string is
-given, it is the path to the caching directory.</p>
-</dd>
-<dt><strong>memory_level</strong><span class="classifier">int, (default=1), rough estimator of the amount of memory</span></dt><dd><p>used by caching. Higher value means more memory for caching</p>
-</dd>
-<dt><strong>verbose</strong><span class="classifier">int, (default=0), indicate the level of verbosity. By default,</span></dt><dd><p>nothing is printed</p>
-</dd>
-<dt><strong>confounds</strong><span class="classifier">Nifti-like img or None, (default=None), list of confounds (2D</span></dt><dd><p>arrays or filenames pointing to CSV files). Must be of same length than
-imgs_list.</p>
-</dd>
-<dt><strong>preproc_fname</strong><span class="classifier">str or None, (default=None), the full filename of the</span></dt><dd><p>preprocessed fMRI data filename, if not given simple ‘_preproc’ suffix
-is add to the original filename</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 
 

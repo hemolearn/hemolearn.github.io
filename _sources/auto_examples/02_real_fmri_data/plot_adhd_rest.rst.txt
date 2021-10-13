@@ -30,7 +30,7 @@ dataset resting-state.
     :depth: 1
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-29
+.. GENERATED FROM PYTHON SOURCE LINES 14-30
 
 .. code-block:: default
 
@@ -40,13 +40,15 @@ dataset resting-state.
 
     import os
     import time
-    import numpy as np
     from nilearn import datasets
+    import numpy as np
 
     from hemolearn import SLRDA
-    from hemolearn.utils import fmri_preprocess, sort_atoms_by_explained_variances
-    from hemolearn.plotting import (plotting_spatial_comp, plotting_temporal_comp,
-                                    plotting_hrf_stats)
+    from hemolearn.plotting import (plot_spatial_maps, plot_temporal_activations,
+                                    plot_vascular_map)
+
+
+    t0_total = time.time()
 
 
 
@@ -55,11 +57,14 @@ dataset resting-state.
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 31-33
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-35
+##############################################################################
+ Create plotting directory
+
+.. GENERATED FROM PYTHON SOURCE LINES 33-37
 
 .. code-block:: default
-
 
     plot_dir = 'plots'
     if not os.path.exists(plot_dir):
@@ -72,22 +77,21 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-49
+.. GENERATED FROM PYTHON SOURCE LINES 38-40
+
+##############################################################################
+ Fetch fMRI subjects
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-47
 
 .. code-block:: default
 
-
+    seed = 0
     TR = 2.0
-    adhd_dataset = datasets.fetch_adhd(n_subjects=1)
-    func_fname = adhd_dataset.func[0]
-    confound_fname = adhd_dataset.confounds[0]
-    X, _, _, _ = fmri_preprocess(func_fname, smoothing_fwhm=6.0, standardize=True,
-                                 detrend=True, low_pass=0.1, high_pass=0.01, t_r=TR,
-                                 memory='__cache__', verbose=0,
-                                 confounds=confound_fname)
-
-    seed = np.random.randint(0, 1000)
-    print(f'Seed used = {seed}')
+    n_subjects = 4
+    adhd_dataset = datasets.fetch_adhd(n_subjects=n_subjects)
+    func_fnames = adhd_dataset.func[:n_subjects]
+    confound_fnames = adhd_dataset.confounds[:n_subjects]
 
 
 
@@ -101,27 +105,27 @@ dataset resting-state.
 
     /home/hcherkaoui/.local/lib/python3.6/site-packages/nilearn/datasets/func.py:439: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
       dtype=None)
-    Seed used = 427
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-63
+.. GENERATED FROM PYTHON SOURCE LINES 48-50
+
+##############################################################################
+ Distangle the neurovascular coupling from the neural activation
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-59
 
 .. code-block:: default
 
-
-    slrda = SLRDA(n_atoms=10, t_r=TR, n_times_atom=20,
-                  hrf_model='scaled_hrf', lbda=0.9, max_iter=50,
-                  eps=1.0e-3, deactivate_v_learning=False,
-                  prox_u='l1-positive-simplex', raise_on_increase=True,
-                  random_state=seed, n_jobs=1, cache_dir='__cache__',
-                  nb_fit_try=1, verbose=0)
+    slrda = SLRDA(n_atoms=10, t_r=TR, n_times_atom=20, lbda=0.75, max_iter=30,
+                  eps=1.0e-3, shared_spatial_maps=True, random_state=seed,
+                  verbose=2)
 
     t0 = time.time()
-    slrda.fit(X)
+    slrda.fit(func_fnames, confound_fnames)
     delta_t = time.strftime("%H h %M min %S s", time.gmtime(time.time() - t0))
-    print("Fitting done in {}".format(delta_t))
+    print(f"Fitting done in {delta_t}")
 
 
 
@@ -133,60 +137,71 @@ dataset resting-state.
 
  .. code-block:: none
 
-    ________________________________________________________________________________
-    [Memory] Calling hemolearn.learn_u_z_v_multi.multi_runs_learn_u_z_v_multi...
-    multi_runs_learn_u_z_v_multi(X=array([[ 0.256382, ...,  0.233928],
-           ...,
-           [-0.432341, ..., -0.148574]], dtype=float32), t_r=2.0, hrf_rois={ 1: array([ 719, ..., 4073]),
-      2: array([4443, ..., 7724]),
-      3: array([1265, ..., 2342]),
-      4: array([5924, ..., 6980]),
-      5: array([2292, ..., 4042]),
-      6: array([4330, ..., 5908]),
-      7: array([ 689, ..., 2648]),
-      8: array([5655, ..., 7711]),
-      9: array([ 703,  704,  705,  706,  707,  708,  711,  712,  713,  714,  715,
-            716,  717,  721,  722,  723,  724, 1025, 1026, 1027, 1028, 1034,
-           1035, 1036, 1037, 1038, 1047, 1048, 1049, 1050, 1376, 1384]),
-      10: array([7025, 7033, 7368, 7369, 7370, 7371, 7377, 7378, 7379, 7380, 7381,
-           7390, 7391, 7392, 7393, 7696, 7697, 7698, 7699, 7700, 7701, 7704,
-           7705, 7706, 7707, 7708, 7709, 7710, 7714, 7715, 7716, 7717]),
-      11: array..., hrf_model='scaled_hrf', deactivate_v_learning=False, deactivate_z_learning=False, n_atoms=10, n_times_atom=20, prox_z='tv', lbda_strategy='ratio', lbda=0.9, rho=2.0, delta_init=1.0, u_init_type='ica', z_init=None, prox_u='l1-positive-simplex', max_iter=50, get_obj=1, get_time=1, random_seed=427, early_stopping=True, eps=0.001, raise_on_increase=True, verbose=0, n_jobs=1, nb_fit_try=1)
-    ____________________________________multi_runs_learn_u_z_v_multi - 95.7s, 1.6min
-    Fitting done in 00 h 01 min 35 s
+    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010042/0010042_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010064/0010064_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0021019/0021019_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Running 1 fit(s) on 4 subject(s) in series
+    Fitting done in 00 h 00 min 00 s
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-74
+.. GENERATED FROM PYTHON SOURCE LINES 60-62
+
+##############################################################################
+ Plot the spatial maps
+
+.. GENERATED FROM PYTHON SOURCE LINES 62-72
 
 .. code-block:: default
 
-
-    hrf_ref = slrda.v_init
-    roi_label_from_hrf_idx = slrda.roi_label_from_hrf_idx
-    pobj, times, a_hat = slrda.lobj, slrda.ltime, slrda.a_hat
-    v_hat = slrda.v_hat
-    u_hat, z_hat, variances = sort_atoms_by_explained_variances(slrda.u_hat,
-                                                                slrda.z_hat,
-                                                                slrda.v_hat,
-                                                                slrda.hrf_rois)
-
-
+    if slrda.shared_spatial_maps or n_subjects == 1:
+        filename = os.path.join(plot_dir, f'spatial_maps.png')
+        plot_spatial_maps(slrda.u_hat_img, filename=filename,
+                          perc_voxels_to_retain='10%', verbose=True)
+    else:
+        for n in range(n_subjects):
+            filename = os.path.join(plot_dir, f'spatial_maps_{n}.png')
+            plot_spatial_maps(slrda.u_hat_img[n], filename=filename,
+                              perc_voxels_to_retain='10%', verbose=True)
 
 
 
 
+.. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_001.png
+    :alt: plot adhd rest
+    :class: sphx-glr-single-img
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-80
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Saving plot under 'plots/spatial_maps.png'
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 73-75
+
+##############################################################################
+ Plot the temporal activations
+
+.. GENERATED FROM PYTHON SOURCE LINES 75-84
 
 .. code-block:: default
 
-
-    plotting_spatial_comp(u_hat, variances, slrda.masker_,
-                          plot_dir=plot_dir, perc_voxels_to_retain=0.1,
-                          fname='u.png', verbose=True)
+    if n_subjects == 1:
+        filename = os.path.join(plot_dir, f'activations.png')
+        plot_temporal_activations(slrda.z_hat, TR, filename=filename, verbose=True)
+    else:
+        for n in range(n_subjects):
+            filename = os.path.join(plot_dir, f'activations_{n}.png')
+            plot_temporal_activations(slrda.z_hat[n], TR, filename=filename,
+                                      verbose=True)
 
 
 
@@ -196,33 +211,68 @@ dataset resting-state.
 
     *
 
-      .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_001.png
-          :alt: plot adhd rest
-          :class: sphx-glr-multi-img
-
-    *
-
       .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_002.png
-          :alt: plot adhd rest
+          :alt: Activation-1, Activation-2, Activation-3, Activation-4, Activation-5, Activation-6, Activation-7, Activation-8, Activation-9, Activation-10
           :class: sphx-glr-multi-img
 
     *
 
       .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_003.png
-          :alt: plot adhd rest
+          :alt: Activation-1, Activation-2, Activation-3, Activation-4, Activation-5, Activation-6, Activation-7, Activation-8, Activation-9, Activation-10
           :class: sphx-glr-multi-img
 
     *
 
       .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_004.png
-          :alt: plot adhd rest
+          :alt: Activation-1, Activation-2, Activation-3, Activation-4, Activation-5, Activation-6, Activation-7, Activation-8, Activation-9, Activation-10
           :class: sphx-glr-multi-img
 
     *
 
       .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_005.png
-          :alt: plot adhd rest
+          :alt: Activation-1, Activation-2, Activation-3, Activation-4, Activation-5, Activation-6, Activation-7, Activation-8, Activation-9, Activation-10
           :class: sphx-glr-multi-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Saving plot under 'plots/activations_0.png'
+    Saving plot under 'plots/activations_1.png'
+    Saving plot under 'plots/activations_2.png'
+    Saving plot under 'plots/activations_3.png'
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 85-86
+
+Plot vascular maps
+
+.. GENERATED FROM PYTHON SOURCE LINES 86-98
+
+.. code-block:: default
+
+    if n_subjects == 1:
+        filename = os.path.join(plot_dir, f'vascular_maps.png')
+        plot_vascular_map(slrda.a_hat_img, display_mode='z',
+                          cut_coords=np.linspace(-30, 60, 5),
+                          filename=filename, verbose=True)
+    else:
+        for n in range(n_subjects):
+            filename = os.path.join(plot_dir, f'vascular_maps_{n}.png')
+            plot_vascular_map(slrda.a_hat_img[n], display_mode='z',
+                              cut_coords=np.linspace(-30, 60, 5),
+                              filename=filename, verbose=True)
+
+
+
+
+.. rst-class:: sphx-glr-horizontal
+
 
     *
 
@@ -248,12 +298,6 @@ dataset resting-state.
           :alt: plot adhd rest
           :class: sphx-glr-multi-img
 
-    *
-
-      .. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_010.png
-          :alt: plot adhd rest
-          :class: sphx-glr-multi-img
-
 
 .. rst-class:: sphx-glr-script-out
 
@@ -261,25 +305,28 @@ dataset resting-state.
 
  .. code-block:: none
 
-    Saving plot under 'plots/u.png'
+    Saving plot under 'plots/vascular_maps_0.png'
+    Saving plot under 'plots/vascular_maps_1.png'
+    Saving plot under 'plots/vascular_maps_2.png'
+    Saving plot under 'plots/vascular_maps_3.png'
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-85
+.. GENERATED FROM PYTHON SOURCE LINES 99-101
+
+##############################################################################
+ Display the runtime of the script
+
+.. GENERATED FROM PYTHON SOURCE LINES 101-104
 
 .. code-block:: default
 
-
-    plotting_temporal_comp(z_hat, variances, TR, plot_dir=plot_dir,
-                           fname='z.png', verbose=True)
-
-
+    delta_t = time.gmtime(time.time() - t0_total)
+    delta_t = time.strftime("%H h %M min %S s", delta_t)
+    print(f"Script runs in {delta_t}")
 
 
-.. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_011.png
-    :alt: Atom-1 (explained variance = 3.44e-02), Atom-2 (explained variance = 2.32e-02), Atom-3 (explained variance = 2.28e-02), Atom-4 (explained variance = 2.16e-02), Atom-5 (explained variance = 2.06e-02), Atom-6 (explained variance = 1.87e-02), Atom-7 (explained variance = 1.70e-02), Atom-8 (explained variance = 1.67e-02), Atom-9 (explained variance = 1.66e-02), Atom-10 (explained variance = 1.44e-02)
-    :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -288,34 +335,7 @@ dataset resting-state.
 
  .. code-block:: none
 
-    Saving plot under 'plots/z.png'
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 86-90
-
-.. code-block:: default
-
-
-    plotting_hrf_stats(v=v_hat, t_r=TR, masker=slrda.masker_, hrf_ref=None,
-                       stat_type='fwhm', plot_dir=plot_dir, fname='v_fwhm.png',
-                       verbose=True)
-
-
-
-.. image:: /auto_examples/02_real_fmri_data/images/sphx_glr_plot_adhd_rest_012.png
-    :alt: plot adhd rest
-    :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    Saving plot under 'plots/v_fwhm.png'
+    Script runs in 00 h 00 min 18 s
 
 
 
@@ -323,7 +343,7 @@ dataset resting-state.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  51.031 seconds)
+   **Total running time of the script:** ( 0 minutes  18.862 seconds)
 
 
 .. _sphx_glr_download_auto_examples_02_real_fmri_data_plot_adhd_rest.py:

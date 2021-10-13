@@ -25,25 +25,25 @@ HemoLearn usage examples
 
 
 
-.. _sphx_glr_auto_examples_01_simulated_fmri_data:
+.. _sphx_glr_auto_examples_01_basic_functionalities:
 
 Simulated fMRI data examples
 -----------------------------
 
-A simple example on synthetic data to illustrate the usgae of the ``multi_runs_learn_u_z_v_multi`` function.
+A simple example on synthetic data to illustrate the usgae of the ``multi_runs_blind_deconvolution_single_subject`` function.
 
 
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example to recover the different neural temporal activities, the associated functional networks...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example to illutrate the different HRF model in HemoLearn.">
 
 .. only:: html
 
- .. figure:: /auto_examples/01_simulated_fmri_data/images/thumb/sphx_glr_plot_simulated_bold_thumb.png
-     :alt: Synthetic fMRI data example
+ .. figure:: /auto_examples/01_basic_functionalities/images/thumb/sphx_glr_plot_hrf_model_thumb.png
+     :alt: HRF models
 
-     :ref:`sphx_glr_auto_examples_01_simulated_fmri_data_plot_simulated_bold.py`
+     :ref:`sphx_glr_auto_examples_01_basic_functionalities_plot_hrf_model.py`
 
 .. raw:: html
 
@@ -53,7 +53,28 @@ A simple example on synthetic data to illustrate the usgae of the ``multi_runs_l
 .. toctree::
    :hidden:
 
-   /auto_examples/01_simulated_fmri_data/plot_simulated_bold
+   /auto_examples/01_basic_functionalities/plot_hrf_model
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example to recover the different neural temporal activities, the associated functional networks...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/01_basic_functionalities/images/thumb/sphx_glr_plot_simulated_bold_thumb.png
+     :alt: Synthetic fMRI data example
+
+     :ref:`sphx_glr_auto_examples_01_basic_functionalities_plot_simulated_bold.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/01_basic_functionalities/plot_simulated_bold
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>
