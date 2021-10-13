@@ -27,7 +27,6 @@ from hemolearn.deconvolution import \
 
 t0_total = time.time()
 
-# %%
 ###############################################################################
 # Create plotting directory
 # -------------------------
@@ -35,7 +34,6 @@ plot_dir = 'plots'
 if not os.path.exists(plot_dir):
     os.makedirs(plot_dir)
 
-# %%
 ###############################################################################
 # Generate the synthetic data
 # ---------------------------
@@ -46,7 +44,6 @@ noisy_X, _, u, v, z, hrf_rois = simulated_data(n_voxels=n_voxels,
                                                n_times_atom=n_times_atom,
                                                snr=snr)
 
-# %%
 ###############################################################################
 # Distangle the neurovascular coupling from the neural activation
 # ---------------------------------------------------------------
@@ -64,7 +61,6 @@ z_hat, u_hat, a_hat, v_hat = z_hat[0], u_hat[0], a_hat[0], v_hat[0]
 delta_t = time.strftime("%H h %M min %S s", time.gmtime(time.time() - t0))
 print("Fitting done in {}".format(delta_t))
 
-# %%
 ###############################################################################
 # Re-label the components
 # -----------------------
@@ -88,7 +84,6 @@ if prod_scal_0 < prod_scal_1:
     u_0_hat = u_1_hat
     u_1_hat = tmp
 
-# %%
 ###############################################################################
 # Plot the temporal activations
 # -----------------------------
@@ -132,7 +127,6 @@ filename = os.path.join(plot_dir, filename)
 plt.savefig(filename, dpi=150)
 print("Saving plot under '{0}'".format(filename))
 
-# %%
 ###############################################################################
 # Plot the spatial maps
 # ---------------------
@@ -162,7 +156,6 @@ filename = os.path.join(plot_dir, filename)
 plt.savefig(filename, dpi=150)
 print("Saving plot under '{0}'".format(filename))
 
-# %%
 ###############################################################################
 # Display the runtime of the script
 # ---------------------------------

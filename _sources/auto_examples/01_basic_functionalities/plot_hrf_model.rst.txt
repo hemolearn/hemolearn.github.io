@@ -53,13 +53,12 @@ Example to illutrate the different HRF model in HemoLearn.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-30
+.. GENERATED FROM PYTHON SOURCE LINES 27-29
 
-##############################################################################
- Create plotting directory
- -------------------------
+Create plotting directory
+-------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
+.. GENERATED FROM PYTHON SOURCE LINES 29-33
 
 .. code-block:: default
 
@@ -74,13 +73,12 @@ Example to illutrate the different HRF model in HemoLearn.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-38
+.. GENERATED FROM PYTHON SOURCE LINES 34-36
 
-##############################################################################
- Construct the HRFs
- ------------------
+Construct the HRFs
+------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-50
+.. GENERATED FROM PYTHON SOURCE LINES 36-48
 
 .. code-block:: default
 
@@ -103,13 +101,12 @@ Example to illutrate the different HRF model in HemoLearn.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+.. GENERATED FROM PYTHON SOURCE LINES 49-51
 
-##############################################################################
- Plot the HRFs
- -------------
+Plot the HRFs
+-------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-67
+.. GENERATED FROM PYTHON SOURCE LINES 51-64
 
 .. code-block:: default
 
@@ -145,13 +142,12 @@ Example to illutrate the different HRF model in HemoLearn.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-71
+.. GENERATED FROM PYTHON SOURCE LINES 65-67
 
-##############################################################################
- Display the runtime of the script
- ---------------------------------
+Display the runtime of the script
+---------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-74
+.. GENERATED FROM PYTHON SOURCE LINES 67-70
 
 .. code-block:: default
 
@@ -176,7 +172,7 @@ Example to illutrate the different HRF model in HemoLearn.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.188 seconds)
+   **Total running time of the script:** ( 0 minutes  0.202 seconds)
 
 
 .. _sphx_glr_download_auto_examples_01_basic_functionalities_plot_hrf_model.py:

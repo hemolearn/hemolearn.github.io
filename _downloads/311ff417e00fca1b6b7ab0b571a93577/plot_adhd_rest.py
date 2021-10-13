@@ -27,7 +27,6 @@ from hemolearn.plotting import (plot_spatial_maps, plot_temporal_activations,
 
 t0_total = time.time()
 
-# %%
 ###############################################################################
 # Create plotting directory
 # -------------------------
@@ -35,7 +34,6 @@ plot_dir = 'plots'
 if not os.path.exists(plot_dir):
     os.makedirs(plot_dir)
 
-# %%
 ###############################################################################
 # Fetch fMRI subjects
 seed = 0
@@ -45,7 +43,6 @@ adhd_dataset = datasets.fetch_adhd(n_subjects=n_subjects)
 func_fnames = adhd_dataset.func[:n_subjects]
 confound_fnames = adhd_dataset.confounds[:n_subjects]
 
-# %%
 ###############################################################################
 # Distangle the neurovascular coupling from the neural activation
 # ---------------------------------------------------------------
@@ -58,7 +55,6 @@ slrda.fit(func_fnames, confound_fnames)
 delta_t = time.strftime("%H h %M min %S s", time.gmtime(time.time() - t0))
 print(f"Fitting done in {delta_t}")
 
-# %%
 ###############################################################################
 # Plot the spatial maps
 # ---------------------
@@ -72,7 +68,6 @@ else:
         plot_spatial_maps(slrda.u_hat_img[n], filename=filename,
                           perc_voxels_to_retain='10%', verbose=True)
 
-# %%
 ###############################################################################
 # Plot the temporal activations
 # -----------------------------
@@ -100,7 +95,6 @@ else:
                           cut_coords=np.linspace(-30, 60, 5),
                           filename=filename, verbose=True)
 
-# %%
 ###############################################################################
 # Display the runtime of the script
 # ---------------------------------

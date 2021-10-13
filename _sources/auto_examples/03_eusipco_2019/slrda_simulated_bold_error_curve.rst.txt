@@ -48,13 +48,12 @@ Example to obtain the estimation error of each parameter of the model.
     t0_total = time.time()
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-31
+.. GENERATED FROM PYTHON SOURCE LINES 28-30
 
-##############################################################################
- Create plotting directory
- -------------------------
+Create plotting directory
+-------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-35
+.. GENERATED FROM PYTHON SOURCE LINES 30-34
 
 .. code-block:: default
 
@@ -63,13 +62,12 @@ Example to obtain the estimation error of each parameter of the model.
         os.makedirs(plot_dir)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-37
 
-##############################################################################
- Collect the estimation errors
- -----------------------------
+Collect the estimation errors
+-----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-133
+.. GENERATED FROM PYTHON SOURCE LINES 37-131
 
 .. code-block:: default
 
@@ -168,13 +166,12 @@ Example to obtain the estimation error of each parameter of the model.
                                         mean_min_u_err, std_min_u_err, delta_t))
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-137
+.. GENERATED FROM PYTHON SOURCE LINES 132-134
 
-##############################################################################
- Plot activation errors
- ----------------------
+Plot activation errors
+----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-153
+.. GENERATED FROM PYTHON SOURCE LINES 134-150
 
 .. code-block:: default
 
@@ -195,13 +192,12 @@ Example to obtain the estimation error of each parameter of the model.
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-157
+.. GENERATED FROM PYTHON SOURCE LINES 151-153
 
-##############################################################################
- Plot spatial maps errors
- ------------------------
+Plot spatial maps errors
+------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-171
+.. GENERATED FROM PYTHON SOURCE LINES 153-167
 
 .. code-block:: default
 
@@ -220,13 +216,12 @@ Example to obtain the estimation error of each parameter of the model.
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-175
+.. GENERATED FROM PYTHON SOURCE LINES 168-170
 
-##############################################################################
- Plot activation derivatives errors
- ----------------------------------
+Plot activation derivatives errors
+----------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-188
+.. GENERATED FROM PYTHON SOURCE LINES 170-183
 
 .. code-block:: default
 
@@ -244,12 +239,12 @@ Example to obtain the estimation error of each parameter of the model.
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 189-191
+.. GENERATED FROM PYTHON SOURCE LINES 184-186
 
 Display the runtime of the script
 ---------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-194
+.. GENERATED FROM PYTHON SOURCE LINES 186-189
 
 .. code-block:: default
 

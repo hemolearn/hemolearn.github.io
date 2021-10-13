@@ -24,7 +24,6 @@ from hemolearn.deconvolution import \
 
 t0_total = time.time()
 
-# %%
 ###############################################################################
 # Create plotting directory
 # -------------------------
@@ -32,7 +31,6 @@ plot_dir = 'plots'
 if not os.path.exists(plot_dir):
     os.makedirs(plot_dir)
 
-# %%
 ###############################################################################
 # Collect the estimation errors
 # -----------------------------
@@ -130,7 +128,6 @@ for snr in l_snr:
                                     snr, mean_min_Dz_err, std_min_Dz_err,
                                     mean_min_u_err, std_min_u_err, delta_t))
 
-# %%
 ###############################################################################
 # Plot activation errors
 # ----------------------
@@ -150,7 +147,6 @@ filename = os.path.join(plot_dir, filename)
 print("Saving error plot under {0}".format(filename))
 plt.savefig(filename, dpi=150)
 
-# %%
 ###############################################################################
 # Plot spatial maps errors
 # ------------------------
@@ -168,7 +164,6 @@ filename = os.path.join(plot_dir, filename)
 print("Saving error plot under {0}".format(filename))
 plt.savefig(filename, dpi=150)
 
-# %%
 ###############################################################################
 # Plot activation derivatives errors
 # ----------------------------------
