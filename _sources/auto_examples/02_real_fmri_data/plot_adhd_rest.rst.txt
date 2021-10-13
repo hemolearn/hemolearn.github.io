@@ -57,12 +57,13 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-33
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 ##############################################################################
  Create plotting directory
+ -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 34-38
 
 .. code-block:: default
 
@@ -77,12 +78,12 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-40
+.. GENERATED FROM PYTHON SOURCE LINES 39-41
 
 ##############################################################################
  Fetch fMRI subjects
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-47
+.. GENERATED FROM PYTHON SOURCE LINES 41-48
 
 .. code-block:: default
 
@@ -109,12 +110,13 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-50
+.. GENERATED FROM PYTHON SOURCE LINES 49-52
 
 ##############################################################################
  Distangle the neurovascular coupling from the neural activation
+ ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-59
+.. GENERATED FROM PYTHON SOURCE LINES 52-61
 
 .. code-block:: default
 
@@ -147,12 +149,13 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-62
+.. GENERATED FROM PYTHON SOURCE LINES 62-65
 
 ##############################################################################
  Plot the spatial maps
+ ---------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-72
+.. GENERATED FROM PYTHON SOURCE LINES 65-75
 
 .. code-block:: default
 
@@ -185,12 +188,13 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-75
+.. GENERATED FROM PYTHON SOURCE LINES 76-79
 
 ##############################################################################
  Plot the temporal activations
+ -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-84
+.. GENERATED FROM PYTHON SOURCE LINES 79-88
 
 .. code-block:: default
 
@@ -248,11 +252,12 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-86
+.. GENERATED FROM PYTHON SOURCE LINES 89-91
 
 Plot vascular maps
+------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-98
+.. GENERATED FROM PYTHON SOURCE LINES 91-103
 
 .. code-block:: default
 
@@ -313,12 +318,13 @@ Plot vascular maps
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
+.. GENERATED FROM PYTHON SOURCE LINES 104-107
 
 ##############################################################################
  Display the runtime of the script
+ ---------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-104
+.. GENERATED FROM PYTHON SOURCE LINES 107-110
 
 .. code-block:: default
 
@@ -335,7 +341,7 @@ Plot vascular maps
 
  .. code-block:: none
 
-    Script runs in 00 h 00 min 18 s
+    Script runs in 00 h 00 min 19 s
 
 
 
@@ -343,7 +349,7 @@ Plot vascular maps
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  18.122 seconds)
+   **Total running time of the script:** ( 0 minutes  19.031 seconds)
 
 
 .. _sphx_glr_download_auto_examples_02_real_fmri_data_plot_adhd_rest.py:

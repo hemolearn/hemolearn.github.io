@@ -30,6 +30,7 @@ t0_total = time.time()
 # %%
 ###############################################################################
 # Create plotting directory
+# -------------------------
 plot_dir = 'plots'
 if not os.path.exists(plot_dir):
     os.makedirs(plot_dir)
@@ -37,6 +38,7 @@ if not os.path.exists(plot_dir):
 # %%
 ###############################################################################
 # Generate the synthetic data
+# ---------------------------
 TR = 1.0
 n_voxels, n_atoms, n_times_valid, n_times_atom, snr = 100, 2, 200, 30, 1.0
 noisy_X, _, u, v, z, hrf_rois = simulated_data(n_voxels=n_voxels,
@@ -47,6 +49,7 @@ noisy_X, _, u, v, z, hrf_rois = simulated_data(n_voxels=n_voxels,
 # %%
 ###############################################################################
 # Distangle the neurovascular coupling from the neural activation
+# ---------------------------------------------------------------
 t0 = time.time()
 results = multi_runs_blind_deconvolution_multiple_subjects(
                     noisy_X, t_r=TR, hrf_rois=hrf_rois, n_atoms=n_atoms,
@@ -64,6 +67,7 @@ print("Fitting done in {}".format(delta_t))
 # %%
 ###############################################################################
 # Re-label the components
+# -----------------------
 u_0_true = u[0, :]
 u_1_true = u[1, :]
 z_0_true = z[0, :].T.ravel()
@@ -87,6 +91,7 @@ if prod_scal_0 < prod_scal_1:
 # %%
 ###############################################################################
 # Plot the temporal activations
+# -----------------------------
 plt.figure("Temporal atoms", figsize=(12, 5))
 plt.subplot(121)
 plt.plot(z_0_hat, lw=2.0, label="Est. atom")
@@ -130,6 +135,7 @@ print("Saving plot under '{0}'".format(filename))
 # %%
 ###############################################################################
 # Plot the spatial maps
+# ---------------------
 fig, axes = plt.subplots(nrows=1, ncols=4)
 len_square = int(np.sqrt(n_voxels))
 l_u = [u_0_true.reshape(len_square, len_square),
@@ -159,6 +165,7 @@ print("Saving plot under '{0}'".format(filename))
 # %%
 ###############################################################################
 # Display the runtime of the script
+# ---------------------------------
 delta_t = time.gmtime(time.time() - t0_total)
 delta_t = time.strftime("%H h %M min %S s", delta_t)
 print(f"Script runs in {delta_t}")

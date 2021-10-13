@@ -37,31 +37,41 @@ Example to obtain the estimation error of each parameter of the model.
 
     import os
     import time
-    import pickle
     import numpy as np
     import matplotlib.pyplot as plt
 
     from hemolearn.simulated_data import simulated_data
-    from hemolearn.utils import get_unique_dirname
     from hemolearn.deconvolution import \
                                     multi_runs_blind_deconvolution_single_subject
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 28-33
-
-.. code-block:: default
+    t0_total = time.time()
 
 
-    dirname = get_unique_dirname("results_slrda_simu_curve_#")
-    if not os.path.exists(dirname):
-        os.makedirs(dirname)
+.. GENERATED FROM PYTHON SOURCE LINES 28-31
 
+##############################################################################
+ Create plotting directory
+ -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-129
+.. GENERATED FROM PYTHON SOURCE LINES 31-35
 
 .. code-block:: default
 
+    plot_dir = 'plots'
+    if not os.path.exists(plot_dir):
+        os.makedirs(plot_dir)
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 36-39
+
+##############################################################################
+ Collect the estimation errors
+ -----------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 39-133
+
+.. code-block:: default
 
     mean_min_Dz_errs, std_min_Dz_errs = [], []
     mean_min_u_errs, std_min_u_errs = [], []
@@ -158,23 +168,15 @@ Example to obtain the estimation error of each parameter of the model.
                                         mean_min_u_err, std_min_u_err, delta_t))
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-138
+.. GENERATED FROM PYTHON SOURCE LINES 134-137
+
+##############################################################################
+ Plot activation errors
+ ----------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 137-153
 
 .. code-block:: default
-
-
-    res = dict(mean_min_Dz_errs=mean_min_Dz_errs, std_min_Dz_errs=std_min_Dz_errs,
-               mean_min_u_errs=mean_min_u_errs, std_min_u_errs=std_min_u_errs)
-    filename = os.path.join(dirname, "results.pkl")
-    print("Pickling results under '{0}'".format(filename))
-    with open(filename, "wb") as pfile:
-        pickle.dump(res, pfile)
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 139-156
-
-.. code-block:: default
-
 
     snr = np.array(l_snr)
 
@@ -187,16 +189,21 @@ Example to obtain the estimation error of each parameter of the model.
     ax1.tick_params(labelsize=15)
     plt.grid()
     plt.tight_layout()
-    filename = 'z_error.pdf'
-    filename = os.path.join(dirname, filename)
+    filename = 'activations_errors.pdf'
+    filename = os.path.join(plot_dir, filename)
     print("Saving error plot under {0}".format(filename))
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-172
+.. GENERATED FROM PYTHON SOURCE LINES 154-157
+
+##############################################################################
+ Plot spatial maps errors
+ ------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 157-171
 
 .. code-block:: default
-
 
     fig, ax2 = plt.subplots(figsize=(7, 4))
     ax2.set_xlabel("SNR [dB]", fontsize=18)
@@ -207,16 +214,21 @@ Example to obtain the estimation error of each parameter of the model.
     ax2.tick_params(labelsize=15)
     plt.grid()
     plt.tight_layout()
-    filename = 'u_error_vs_snr.pdf'
-    filename = os.path.join(dirname, filename)
+    filename = 'spatial_maps_snr.pdf'
+    filename = os.path.join(plot_dir, filename)
     print("Saving error plot under {0}".format(filename))
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-186
+.. GENERATED FROM PYTHON SOURCE LINES 172-175
+
+##############################################################################
+ Plot activation derivatives errors
+ ----------------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 175-188
 
 .. code-block:: default
-
 
     fig, ax1 = plt.subplots(figsize=(8, 4))
     ax1.set_xlabel("SNR [dB]", fontsize=18)
@@ -226,10 +238,24 @@ Example to obtain the estimation error of each parameter of the model.
     plt.xticks(l_snr)
     ax1.tick_params(labelsize=18)
     plt.tight_layout()
-    filename = 'z_error.pdf'
-    filename = os.path.join(dirname, filename)
+    filename = 'activation_derivatives_errors.pdf'
+    filename = os.path.join(plot_dir, filename)
     print("Saving error plot under {0}".format(filename))
     plt.savefig(filename, dpi=150)
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 189-191
+
+Display the runtime of the script
+---------------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 191-194
+
+.. code-block:: default
+
+    delta_t = time.gmtime(time.time() - t0_total)
+    delta_t = time.strftime("%H h %M min %S s", delta_t)
+    print(f"Script runs in {delta_t}")
 
 
 .. rst-class:: sphx-glr-timing

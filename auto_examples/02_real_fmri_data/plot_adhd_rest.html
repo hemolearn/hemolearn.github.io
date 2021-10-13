@@ -19,7 +19,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SyntaxError" href="../03_eusipco_2019/single_subject_adhd.html" />
+    <link rel="next" title="EUSIPCO 2019 CHerkaoui et a.l. experimental reproduction" href="../03_eusipco_2019/slrda_simulated_bold_error_curve.html" />
     <link rel="prev" title="Synthetic fMRI data example" href="../01_basic_functionalities/plot_simulated_bold.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -108,6 +108,12 @@ to download the full example code</p>
 <p>Example to recover the different neural temporal activities, the associated
 functional networks maps and the HRFs per ROIs in the fMRI data, on the ADHD
 dataset resting-state.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title"><strong>Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#plot-vascular-maps" id="id1">Plot vascular maps</a></p></li>
+</ul>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Hamza Cherkaoui &lt;hamza.cherkaoui@inria.fr&gt;</span>
 <span class="c1"># License: BSD (3-clause)</span>
 
@@ -204,7 +210,8 @@ Saving plot under &#39;plots/activations_2.png&#39;
 Saving plot under &#39;plots/activations_3.png&#39;
 </pre></div>
 </div>
-<p>Plot vascular maps</p>
+<div class="section" id="plot-vascular-maps">
+<h2><a class="toc-backref" href="#id1">Plot vascular maps</a><a class="headerlink" href="#plot-vascular-maps" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_subjects</span></a> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">filename</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot_dir</span></a><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;vascular_maps.png&#39;</span><span class="p">)</span>
     <span class="n">plot_vascular_map</span><span class="p">(</span><a href="https://hemolearn.github.io/_autosummary/hemolearn.SLRDA.html#hemolearn.SLRDA" title="hemolearn.SLRDA" class="sphx-glr-backref-module-hemolearn sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">slrda</span></a><span class="o">.</span><span class="n">a_hat_img</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span>
@@ -241,10 +248,10 @@ Saving plot under &#39;plots/vascular_maps_3.png&#39;
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Script runs in 00 h 00 min 18 s
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Script runs in 00 h 00 min 19 s
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  18.122 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.031 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-02-real-fmri-data-plot-adhd-rest-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/311ff417e00fca1b6b7ab0b571a93577/plot_adhd_rest.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_adhd_rest.py</span></code></a></p>
@@ -254,6 +261,7 @@ Saving plot under &#39;plots/vascular_maps_3.png&#39;
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 
 

@@ -30,6 +30,7 @@ t0_total = time.time()
 # %%
 ###############################################################################
 # Create plotting directory
+# -------------------------
 plot_dir = 'plots'
 if not os.path.exists(plot_dir):
     os.makedirs(plot_dir)
@@ -47,6 +48,7 @@ confound_fnames = adhd_dataset.confounds[:n_subjects]
 # %%
 ###############################################################################
 # Distangle the neurovascular coupling from the neural activation
+# ---------------------------------------------------------------
 slrda = SLRDA(n_atoms=10, t_r=TR, n_times_atom=20, lbda=0.75, max_iter=30,
               eps=1.0e-3, shared_spatial_maps=True, random_state=seed,
               verbose=2)
@@ -59,6 +61,7 @@ print(f"Fitting done in {delta_t}")
 # %%
 ###############################################################################
 # Plot the spatial maps
+# ---------------------
 if slrda.shared_spatial_maps or n_subjects == 1:
     filename = os.path.join(plot_dir, f'spatial_maps.png')
     plot_spatial_maps(slrda.u_hat_img, filename=filename,
@@ -72,6 +75,7 @@ else:
 # %%
 ###############################################################################
 # Plot the temporal activations
+# -----------------------------
 if n_subjects == 1:
     filename = os.path.join(plot_dir, f'activations.png')
     plot_temporal_activations(slrda.z_hat, TR, filename=filename, verbose=True)
@@ -83,6 +87,7 @@ else:
 
 ###############################################################################
 # Plot vascular maps
+# ------------------
 if n_subjects == 1:
     filename = os.path.join(plot_dir, f'vascular_maps.png')
     plot_vascular_map(slrda.a_hat_img, display_mode='z',
@@ -98,6 +103,7 @@ else:
 # %%
 ###############################################################################
 # Display the runtime of the script
+# ---------------------------------
 delta_t = time.gmtime(time.time() - t0_total)
 delta_t = time.strftime("%H h %M min %S s", delta_t)
 print(f"Script runs in {delta_t}")

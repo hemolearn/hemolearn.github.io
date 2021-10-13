@@ -57,12 +57,13 @@ fMRI data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-33
+.. GENERATED FROM PYTHON SOURCE LINES 31-34
 
 ##############################################################################
  Create plotting directory
+ -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 34-38
 
 .. code-block:: default
 
@@ -77,12 +78,13 @@ fMRI data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-40
+.. GENERATED FROM PYTHON SOURCE LINES 39-42
 
 ##############################################################################
  Generate the synthetic data
+ ---------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-47
+.. GENERATED FROM PYTHON SOURCE LINES 42-49
 
 .. code-block:: default
 
@@ -100,12 +102,13 @@ fMRI data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-50
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 ##############################################################################
  Distangle the neurovascular coupling from the neural activation
+ ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-64
+.. GENERATED FROM PYTHON SOURCE LINES 53-67
 
 .. code-block:: default
 
@@ -134,17 +137,18 @@ fMRI data.
  .. code-block:: none
 
     [Decomposition] Best fitting: 3
-    Fitting done in 00 h 00 min 02 s
+    Fitting done in 00 h 00 min 03 s
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-67
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 ##############################################################################
  Re-label the components
+ -----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-87
+.. GENERATED FROM PYTHON SOURCE LINES 71-91
 
 .. code-block:: default
 
@@ -175,12 +179,13 @@ fMRI data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-90
+.. GENERATED FROM PYTHON SOURCE LINES 92-95
 
 ##############################################################################
  Plot the temporal activations
+ -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-130
+.. GENERATED FROM PYTHON SOURCE LINES 95-135
 
 .. code-block:: default
 
@@ -243,12 +248,13 @@ fMRI data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-133
+.. GENERATED FROM PYTHON SOURCE LINES 136-139
 
 ##############################################################################
  Plot the spatial maps
+ ---------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-159
+.. GENERATED FROM PYTHON SOURCE LINES 139-165
 
 .. code-block:: default
 
@@ -297,12 +303,13 @@ fMRI data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-162
+.. GENERATED FROM PYTHON SOURCE LINES 166-169
 
 ##############################################################################
  Display the runtime of the script
+ ---------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-164
+.. GENERATED FROM PYTHON SOURCE LINES 169-171
 
 .. code-block:: default
 
@@ -326,7 +333,7 @@ fMRI data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.461 seconds)
+   **Total running time of the script:** ( 0 minutes  3.818 seconds)
 
 
 .. _sphx_glr_download_auto_examples_01_basic_functionalities_plot_simulated_bold.py:
