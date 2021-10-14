@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:05.516** total execution time for **auto_examples_01_basic_functionalities** files:
+**00:06.238** total execution time for **auto_examples_01_basic_functionalities** files:
 
 +------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_01_basic_functionalities_plot_simulated_bold.py` (``plot_simulated_bold.py``) | 00:04.693 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_01_basic_functionalities_plot_simulated_bold.py` (``plot_simulated_bold.py``) | 00:05.333 | 0.0 MB |
 +------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_01_basic_functionalities_plot_hrf_model.py` (``plot_hrf_model.py``)           | 00:00.823 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_01_basic_functionalities_plot_hrf_model.py` (``plot_hrf_model.py``)           | 00:00.905 | 0.0 MB |
 +------------------------------------------------------------------------------------------------------------+-----------+--------+
