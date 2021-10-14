@@ -30,7 +30,7 @@ dataset resting-state.
     :depth: 1
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-30
+.. GENERATED FROM PYTHON SOURCE LINES 14-27
 
 .. code-block:: default
 
@@ -39,7 +39,6 @@ dataset resting-state.
     # License: BSD (3-clause)
 
     import os
-    import time
     from nilearn import datasets
     import numpy as np
 
@@ -48,7 +47,6 @@ dataset resting-state.
                                     plot_vascular_map)
 
 
-    t0_total = time.time()
 
 
 
@@ -56,13 +54,12 @@ dataset resting-state.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 31-33
+.. GENERATED FROM PYTHON SOURCE LINES 28-30
 
 Create plotting directory
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 30-34
 
 .. code-block:: default
 
@@ -77,11 +74,12 @@ Create plotting directory
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-37
 
 Fetch fMRI subjects
+-------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-46
+.. GENERATED FROM PYTHON SOURCE LINES 37-44
 
 .. code-block:: default
 
@@ -108,23 +106,19 @@ Fetch fMRI subjects
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-49
+.. GENERATED FROM PYTHON SOURCE LINES 45-47
 
 Distangle the neurovascular coupling from the neural activation
 ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-58
+.. GENERATED FROM PYTHON SOURCE LINES 47-52
 
 .. code-block:: default
 
     slrda = SLRDA(n_atoms=10, t_r=TR, n_times_atom=20, lbda=0.75, max_iter=30,
                   eps=1.0e-3, shared_spatial_maps=True, random_state=seed,
                   verbose=2)
-
-    t0 = time.time()
     slrda.fit(func_fnames, confound_fnames)
-    delta_t = time.strftime("%H h %M min %S s", time.gmtime(time.time() - t0))
-    print(f"Fitting done in {delta_t}")
 
 
 
@@ -141,17 +135,17 @@ Distangle the neurovascular coupling from the neural activation
     [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz'
     [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0021019/0021019_rest_tshift_RPI_voreg_mni.nii.gz'
     [SLRDA] Running 1 fit(s) on 4 subject(s) in series
-    Fitting done in 00 h 00 min 00 s
+
+    <hemolearn.SLRDA object at 0x7efc8bf4fb00>
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 59-61
+.. GENERATED FROM PYTHON SOURCE LINES 53-55
 
 Plot the spatial maps
 ---------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-71
+.. GENERATED FROM PYTHON SOURCE LINES 55-65
 
 .. code-block:: default
 
@@ -184,12 +178,12 @@ Plot the spatial maps
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-74
+.. GENERATED FROM PYTHON SOURCE LINES 66-68
 
 Plot the temporal activations
 -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-83
+.. GENERATED FROM PYTHON SOURCE LINES 68-77
 
 .. code-block:: default
 
@@ -247,12 +241,12 @@ Plot the temporal activations
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-86
+.. GENERATED FROM PYTHON SOURCE LINES 78-80
 
 Plot vascular maps
 ------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-98
+.. GENERATED FROM PYTHON SOURCE LINES 80-91
 
 .. code-block:: default
 
@@ -267,7 +261,6 @@ Plot vascular maps
             plot_vascular_map(slrda.a_hat_img[n], display_mode='z',
                               cut_coords=np.linspace(-30, 60, 5),
                               filename=filename, verbose=True)
-
 
 
 
@@ -313,37 +306,10 @@ Plot vascular maps
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
-
-Display the runtime of the script
----------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 101-104
-
-.. code-block:: default
-
-    delta_t = time.gmtime(time.time() - t0_total)
-    delta_t = time.strftime("%H h %M min %S s", delta_t)
-    print(f"Script runs in {delta_t}")
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    Script runs in 00 h 00 min 23 s
-
-
-
-
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  23.896 seconds)
+   **Total running time of the script:** ( 0 minutes  20.755 seconds)
 
 
 .. _sphx_glr_download_auto_examples_02_real_fmri_data_plot_adhd_rest.py:

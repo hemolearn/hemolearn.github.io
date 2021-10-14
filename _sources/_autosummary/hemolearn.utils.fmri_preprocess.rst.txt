@@ -1,6 +1,0 @@
-hemolearn.utils.fmri\_preprocess
-================================
-
-.. currentmodule:: hemolearn.utils
-
-.. autofunction:: fmri_preprocess

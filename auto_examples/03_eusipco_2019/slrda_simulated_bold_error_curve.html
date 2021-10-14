@@ -114,23 +114,18 @@ to download the full example code</p>
 <li><p><a class="reference internal" href="#plot-activation-errors" id="id3">Plot activation errors</a></p></li>
 <li><p><a class="reference internal" href="#plot-spatial-maps-errors" id="id4">Plot spatial maps errors</a></p></li>
 <li><p><a class="reference internal" href="#plot-activation-derivatives-errors" id="id5">Plot activation derivatives errors</a></p></li>
-<li><p><a class="reference internal" href="#display-the-runtime-of-the-script" id="id6">Display the runtime of the script</a></p></li>
 </ul>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Hamza Cherkaoui &lt;hamza.cherkaoui@inria.fr&gt;</span>
 <span class="c1"># License: BSD (3-clause)</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">hemolearn.simulated_data</span> <span class="kn">import</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.simulated_data.simulated_data.html#hemolearn.simulated_data.simulated_data" title="hemolearn.simulated_data.simulated_data" class="sphx-glr-backref-module-hemolearn-simulated_data sphx-glr-backref-type-py-function"><span class="n">simulated_data</span></a>
 <span class="kn">from</span> <span class="nn">hemolearn.deconvolution</span> <span class="kn">import</span> \
                                 <span class="n">multi_runs_blind_deconvolution_single_subject</span>
-
-
-<span class="n">t0_total</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <div class="section" id="create-plotting-directory">
@@ -148,8 +143,6 @@ to download the full example code</p>
 <span class="n">nb_trial</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">l_snr</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">snr</span> <span class="ow">in</span> <span class="n">l_snr</span><span class="p">:</span>
-
-    <span class="n">t0</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
 
     <span class="n">min_Dz_errs</span><span class="p">,</span> <span class="n">min_u_errs</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_trial</span><span class="p">):</span>
@@ -179,7 +172,7 @@ to download the full example code</p>
             <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="c1"># lbda is too big...</span>
                 <span class="k">continue</span>
-            <span class="n">z_hat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u_hat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">pobj</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">results</span>
+            <span class="n">z_hat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u_hat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">pobj</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">results</span>
 
             <span class="c1"># rename all variables</span>
             <span class="n">u_0</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
@@ -230,12 +223,9 @@ to download the full example code</p>
     <span class="n">mean_min_u_errs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_min_u_err</span><span class="p">)</span>
     <span class="n">std_min_u_errs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">std_min_u_err</span><span class="p">)</span>
 
-    <span class="n">delta_t</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.strftime" title="time.strftime" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">strftime</span></a><span class="p">(</span><span class="s2">&quot;%M min %S s&quot;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/time.html#time.gmtime" title="time.gmtime" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[case SNR=</span><span class="si">{:.2e}</span><span class="s2">dB], mean min Dz-error </span><span class="si">{:.2f}</span><span class="s2"> with std </span><span class="si">{:.2f}</span><span class="s2">, &quot;</span>
-          <span class="s2">&quot;mean min u-error </span><span class="si">{:.2f}</span><span class="s2"> with std </span><span class="si">{:.2f}</span><span class="s2">, c.t. : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                                    <span class="n">snr</span><span class="p">,</span> <span class="n">mean_min_Dz_err</span><span class="p">,</span> <span class="n">std_min_Dz_err</span><span class="p">,</span>
-                                    <span class="n">mean_min_u_err</span><span class="p">,</span> <span class="n">std_min_u_err</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[case SNR=</span><span class="si">{</span><span class="n">snr</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">dB], mean min Dz-error </span><span class="si">{</span><span class="n">mean_min_Dz_err</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;with std </span><span class="si">{</span><span class="n">std_min_Dz_err</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, mean min u-error &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mean_min_u_err</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> with std </span><span class="si">{</span><span class="n">std_min_u_err</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -291,14 +281,6 @@ to download the full example code</p>
 <span class="n">filename</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">plot_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving error plot under </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.savefig.html#matplotlib.pyplot.savefig" title="matplotlib.pyplot.savefig" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="display-the-runtime-of-the-script">
-<h2><a class="toc-backref" href="#id6">Display the runtime of the script</a><a class="headerlink" href="#display-the-runtime-of-the-script" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delta_t</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.gmtime" title="time.gmtime" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0_total</span><span class="p">)</span>
-<span class="n">delta_t</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.strftime" title="time.strftime" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">strftime</span></a><span class="p">(</span><span class="s2">&quot;%H h %M min %S s&quot;</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Script runs in </span><span class="si">{</span><span class="n">delta_t</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>

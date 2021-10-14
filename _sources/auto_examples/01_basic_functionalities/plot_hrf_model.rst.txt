@@ -28,7 +28,7 @@ Example to illutrate the different HRF model in HemoLearn.
     :depth: 1
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-26
+.. GENERATED FROM PYTHON SOURCE LINES 12-24
 
 .. code-block:: default
 
@@ -44,7 +44,6 @@ Example to illutrate the different HRF model in HemoLearn.
     from hemolearn.hrf_model import scaled_hrf, hrf_3_basis, hrf_2_basis
 
 
-    t0_total = time.time()
 
 
 
@@ -52,13 +51,12 @@ Example to illutrate the different HRF model in HemoLearn.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 27-29
+.. GENERATED FROM PYTHON SOURCE LINES 25-27
 
 Create plotting directory
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-33
+.. GENERATED FROM PYTHON SOURCE LINES 27-31
 
 .. code-block:: default
 
@@ -73,12 +71,12 @@ Create plotting directory
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-36
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
 
 Construct the HRFs
 ------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-54
+.. GENERATED FROM PYTHON SOURCE LINES 34-52
 
 .. code-block:: default
 
@@ -107,12 +105,12 @@ Construct the HRFs
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-57
+.. GENERATED FROM PYTHON SOURCE LINES 53-55
 
 Plot all the HRF models
 -----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-71
+.. GENERATED FROM PYTHON SOURCE LINES 55-69
 
 .. code-block:: default
 
@@ -149,12 +147,12 @@ Plot all the HRF models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-74
+.. GENERATED FROM PYTHON SOURCE LINES 70-72
 
 Plot different scaled model HRFs
 --------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-91
+.. GENERATED FROM PYTHON SOURCE LINES 72-88
 
 .. code-block:: default
 
@@ -177,7 +175,6 @@ Plot different scaled model HRFs
 
 
 
-
 .. image:: /auto_examples/01_basic_functionalities/images/sphx_glr_plot_hrf_model_002.png
     :alt: Scaled model HRFs
     :class: sphx-glr-single-img
@@ -194,37 +191,10 @@ Plot different scaled model HRFs
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-94
-
-Display the runtime of the script
----------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
-
-.. code-block:: default
-
-    delta_t = time.gmtime(time.time() - t0_total)
-    delta_t = time.strftime("%H h %M min %S s", delta_t)
-    print(f"Script runs in {delta_t}")
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    Script runs in 00 h 00 min 00 s
-
-
-
-
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.905 seconds)
+   **Total running time of the script:** ( 0 minutes  0.923 seconds)
 
 
 .. _sphx_glr_download_auto_examples_01_basic_functionalities_plot_hrf_model.py:

@@ -1,6 +1,0 @@
-hemolearn.learn\_u\_z\_v\_multi.multi\_runs\_learn\_u\_z\_v\_multi
-==================================================================
-
-.. currentmodule:: hemolearn.learn_u_z_v_multi
-
-.. autofunction:: multi_runs_learn_u_z_v_multi

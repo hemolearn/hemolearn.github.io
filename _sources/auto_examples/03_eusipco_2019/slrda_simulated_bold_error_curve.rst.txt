@@ -28,7 +28,7 @@ Example to obtain the estimation error of each parameter of the model.
     :depth: 1
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-27
+.. GENERATED FROM PYTHON SOURCE LINES 12-24
 
 .. code-block:: default
 
@@ -36,7 +36,6 @@ Example to obtain the estimation error of each parameter of the model.
     # License: BSD (3-clause)
 
     import os
-    import time
     import numpy as np
     import matplotlib.pyplot as plt
 
@@ -45,15 +44,13 @@ Example to obtain the estimation error of each parameter of the model.
                                     multi_runs_blind_deconvolution_single_subject
 
 
-    t0_total = time.time()
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 28-30
+.. GENERATED FROM PYTHON SOURCE LINES 25-27
 
 Create plotting directory
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
+.. GENERATED FROM PYTHON SOURCE LINES 27-31
 
 .. code-block:: default
 
@@ -62,12 +59,12 @@ Create plotting directory
         os.makedirs(plot_dir)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-37
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
 
 Collect the estimation errors
 -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-131
+.. GENERATED FROM PYTHON SOURCE LINES 34-123
 
 .. code-block:: default
 
@@ -76,8 +73,6 @@ Collect the estimation errors
     nb_trial = 100
     l_snr = [0.1, 0.5, 1.0, 5.0, 10.0, 15.0, 20.0]
     for snr in l_snr:
-
-        t0 = time.time()
 
         min_Dz_errs, min_u_errs = [], []
         for _ in range(nb_trial):
@@ -107,7 +102,7 @@ Collect the estimation errors
                 except AssertionError as e:
                     # lbda is too big...
                     continue
-                z_hat, _, u_hat, _, _, _, _, pobj, times = results
+                z_hat, _, u_hat, _, _, _, _, pobj, _ = results
 
                 # rename all variables
                 u_0 = u[0, :]
@@ -158,20 +153,17 @@ Collect the estimation errors
         mean_min_u_errs.append(mean_min_u_err)
         std_min_u_errs.append(std_min_u_err)
 
-        delta_t = time.strftime("%M min %S s", time.gmtime(time.time() - t0))
-
-        print("[case SNR={:.2e}dB], mean min Dz-error {:.2f} with std {:.2f}, "
-              "mean min u-error {:.2f} with std {:.2f}, c.t. : {}".format(
-                                        snr, mean_min_Dz_err, std_min_Dz_err,
-                                        mean_min_u_err, std_min_u_err, delta_t))
+        print(f"[case SNR={snr:.2e}dB], mean min Dz-error {mean_min_Dz_err:.2f} "
+              f"with std {std_min_Dz_err:.2f}, mean min u-error "
+              f"{mean_min_u_err:.2f} with std {std_min_u_err:.2f}")
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-134
+.. GENERATED FROM PYTHON SOURCE LINES 124-126
 
 Plot activation errors
 ----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-150
+.. GENERATED FROM PYTHON SOURCE LINES 126-142
 
 .. code-block:: default
 
@@ -192,12 +184,12 @@ Plot activation errors
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
+.. GENERATED FROM PYTHON SOURCE LINES 143-145
 
 Plot spatial maps errors
 ------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-167
+.. GENERATED FROM PYTHON SOURCE LINES 145-159
 
 .. code-block:: default
 
@@ -216,12 +208,12 @@ Plot spatial maps errors
     plt.savefig(filename, dpi=150)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-170
+.. GENERATED FROM PYTHON SOURCE LINES 160-162
 
 Plot activation derivatives errors
 ----------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-183
+.. GENERATED FROM PYTHON SOURCE LINES 162-174
 
 .. code-block:: default
 
@@ -237,20 +229,6 @@ Plot activation derivatives errors
     filename = os.path.join(plot_dir, filename)
     print("Saving error plot under {0}".format(filename))
     plt.savefig(filename, dpi=150)
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 184-186
-
-Display the runtime of the script
----------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 186-189
-
-.. code-block:: default
-
-    delta_t = time.gmtime(time.time() - t0_total)
-    delta_t = time.strftime("%H h %M min %S s", delta_t)
-    print(f"Script runs in {delta_t}")
 
 
 .. rst-class:: sphx-glr-timing

@@ -113,7 +113,6 @@ to download the full example code</p>
 <li><p><a class="reference internal" href="#construct-the-hrfs" id="id2">Construct the HRFs</a></p></li>
 <li><p><a class="reference internal" href="#plot-all-the-hrf-models" id="id3">Plot all the HRF models</a></p></li>
 <li><p><a class="reference internal" href="#plot-different-scaled-model-hrfs" id="id4">Plot different scaled model HRFs</a></p></li>
-<li><p><a class="reference internal" href="#display-the-runtime-of-the-script" id="id5">Display the runtime of the script</a></p></li>
 </ul>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Hamza Cherkaoui &lt;hamza.cherkaoui@inria.fr&gt;</span>
@@ -125,9 +124,6 @@ to download the full example code</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">hemolearn.hrf_model</span> <span class="kn">import</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.hrf_model.scaled_hrf.html#hemolearn.hrf_model.scaled_hrf" title="hemolearn.hrf_model.scaled_hrf" class="sphx-glr-backref-module-hemolearn-hrf_model sphx-glr-backref-type-py-function"><span class="n">scaled_hrf</span></a><span class="p">,</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.hrf_model.hrf_3_basis.html#hemolearn.hrf_model.hrf_3_basis" title="hemolearn.hrf_model.hrf_3_basis" class="sphx-glr-backref-module-hemolearn-hrf_model sphx-glr-backref-type-py-function"><span class="n">hrf_3_basis</span></a><span class="p">,</span> <a href="https://hemolearn.github.io/_autosummary/hemolearn.hrf_model.hrf_2_basis.html#hemolearn.hrf_model.hrf_2_basis" title="hemolearn.hrf_model.hrf_2_basis" class="sphx-glr-backref-module-hemolearn-hrf_model sphx-glr-backref-type-py-function"><span class="n">hrf_2_basis</span></a>
-
-
-<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t0_total</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <div class="section" id="create-plotting-directory">
@@ -208,19 +204,7 @@ to download the full example code</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Saving plot under &#39;plots/scaled_hrf_model.png&#39;
 </pre></div>
 </div>
-</div>
-<div class="section" id="display-the-runtime-of-the-script">
-<h2><a class="toc-backref" href="#id5">Display the runtime of the script</a><a class="headerlink" href="#display-the-runtime-of-the-script" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">delta_t</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.gmtime" title="time.gmtime" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t0_total</span></a><span class="p">)</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">delta_t</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.strftime" title="time.strftime" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">strftime</span></a><span class="p">(</span><span class="s2">&quot;%H h %M min %S s&quot;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">delta_t</span></a><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Script runs in </span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">delta_t</span></a><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Script runs in 00 h 00 min 00 s
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.905 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.923 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-01-basic-functionalities-plot-hrf-model-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4cc575464e28a185c7bf53b52884d611/plot_hrf_model.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_hrf_model.py</span></code></a></p>

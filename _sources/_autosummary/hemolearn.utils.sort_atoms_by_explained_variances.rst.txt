@@ -1,6 +1,0 @@
-hemolearn.utils.sort\_atoms\_by\_explained\_variances
-=====================================================
-
-.. currentmodule:: hemolearn.utils
-
-.. autofunction:: sort_atoms_by_explained_variances
