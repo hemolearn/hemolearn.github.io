@@ -30,7 +30,7 @@ dataset resting-state.
     :depth: 1
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-27
+.. GENERATED FROM PYTHON SOURCE LINES 14-25
 
 .. code-block:: default
 
@@ -42,9 +42,7 @@ dataset resting-state.
     from nilearn import datasets
     import numpy as np
 
-    from hemolearn import SLRDA
-    from hemolearn.plotting import (plot_spatial_maps, plot_temporal_activations,
-                                    plot_vascular_map)
+    from hemolearn import SLRDA, plotting
 
 
 
@@ -54,12 +52,12 @@ dataset resting-state.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-30
+.. GENERATED FROM PYTHON SOURCE LINES 26-28
 
 Create plotting directory
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
+.. GENERATED FROM PYTHON SOURCE LINES 28-32
 
 .. code-block:: default
 
@@ -74,18 +72,16 @@ Create plotting directory
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-37
+.. GENERATED FROM PYTHON SOURCE LINES 33-35
 
 Fetch fMRI subjects
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-44
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
 
 .. code-block:: default
 
-    seed = 0
-    TR = 2.0
-    n_subjects = 4
+    seed, TR, n_subjects = 0, 2.0, 4
     adhd_dataset = datasets.fetch_adhd(n_subjects=n_subjects)
     func_fnames = adhd_dataset.func[:n_subjects]
     confound_fnames = adhd_dataset.confounds[:n_subjects]
@@ -100,25 +96,25 @@ Fetch fMRI subjects
 
  .. code-block:: none
 
-    /home/hcherkaoui/.local/lib/python3.6/site-packages/nilearn/datasets/func.py:439: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+    /home/hcherkaoui/src/dev/nilearn/nilearn/datasets/func.py:241: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
       dtype=None)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-47
+.. GENERATED FROM PYTHON SOURCE LINES 41-43
 
 Distangle the neurovascular coupling from the neural activation
 ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-52
+.. GENERATED FROM PYTHON SOURCE LINES 43-48
 
 .. code-block:: default
 
-    slrda = SLRDA(n_atoms=10, t_r=TR, n_times_atom=20, lbda=0.75, max_iter=30,
-                  eps=1.0e-3, shared_spatial_maps=True, random_state=seed,
-                  verbose=2)
-    slrda.fit(func_fnames, confound_fnames)
+    slrda = SLRDA(n_atoms=10, t_r=TR, n_times_atom=30, lbda=0.1, max_iter=50,
+                  standardize=True, shared_spatial_maps=True, random_state=seed,
+                  verbose=1)
+    a_hat_img = slrda.fit_transform(func_fnames, confound_fnames=confound_fnames)
 
 
 
@@ -130,34 +126,27 @@ Distangle the neurovascular coupling from the neural activation
 
  .. code-block:: none
 
-    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010042/0010042_rest_tshift_RPI_voreg_mni.nii.gz'
-    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010064/0010064_rest_tshift_RPI_voreg_mni.nii.gz'
-    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz'
-    [SLRDA] Preprocessing subject '/home/hcherkaoui/nilearn_data/adhd/data/0021019/0021019_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Clean subject '/home/hcherkaoui/nilearn_data/adhd/data/0010042/0010042_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Clean subject '/home/hcherkaoui/nilearn_data/adhd/data/0010064/0010064_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Clean subject '/home/hcherkaoui/nilearn_data/adhd/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz'
+    [SLRDA] Clean subject '/home/hcherkaoui/nilearn_data/adhd/data/0021019/0021019_rest_tshift_RPI_voreg_mni.nii.gz'
     [SLRDA] Running 1 fit(s) on 4 subject(s) in series
 
-    <hemolearn.SLRDA object at 0x7efc8bf4fb00>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-55
+.. GENERATED FROM PYTHON SOURCE LINES 49-51
 
 Plot the spatial maps
 ---------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-65
+.. GENERATED FROM PYTHON SOURCE LINES 51-55
 
 .. code-block:: default
 
-    if slrda.shared_spatial_maps or n_subjects == 1:
-        filename = os.path.join(plot_dir, f'spatial_maps.png')
-        plot_spatial_maps(slrda.u_hat_img, filename=filename,
-                          perc_voxels_to_retain='10%', verbose=True)
-    else:
-        for n in range(n_subjects):
-            filename = os.path.join(plot_dir, f'spatial_maps_{n}.png')
-            plot_spatial_maps(slrda.u_hat_img[n], filename=filename,
-                              perc_voxels_to_retain='10%', verbose=True)
+    filename = os.path.join(plot_dir, f'spatial_maps.png')
+    plotting.plot_spatial_maps(slrda.u_hat_img, filename=filename,
+                               perc_voxels_to_retain='1%', verbose=True)
 
 
 
@@ -178,23 +167,19 @@ Plot the spatial maps
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-68
+.. GENERATED FROM PYTHON SOURCE LINES 56-58
 
 Plot the temporal activations
 -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-77
+.. GENERATED FROM PYTHON SOURCE LINES 58-63
 
 .. code-block:: default
 
-    if n_subjects == 1:
-        filename = os.path.join(plot_dir, f'activations.png')
-        plot_temporal_activations(slrda.z_hat, TR, filename=filename, verbose=True)
-    else:
-        for n in range(n_subjects):
-            filename = os.path.join(plot_dir, f'activations_{n}.png')
-            plot_temporal_activations(slrda.z_hat[n], TR, filename=filename,
-                                      verbose=True)
+    for n in range(n_subjects):
+        filename = os.path.join(plot_dir, f'activations_{n}.png')
+        plotting.plot_temporal_activations(slrda.z_hat[n], TR, filename=filename,
+                                           verbose=True)
 
 
 
@@ -241,26 +226,21 @@ Plot the temporal activations
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-80
+.. GENERATED FROM PYTHON SOURCE LINES 64-66
 
 Plot vascular maps
 ------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-91
+.. GENERATED FROM PYTHON SOURCE LINES 66-72
 
 .. code-block:: default
 
-    if n_subjects == 1:
-        filename = os.path.join(plot_dir, f'vascular_maps.png')
-        plot_vascular_map(slrda.a_hat_img, display_mode='z',
-                          cut_coords=np.linspace(-30, 60, 5),
-                          filename=filename, verbose=True)
-    else:
-        for n in range(n_subjects):
-            filename = os.path.join(plot_dir, f'vascular_maps_{n}.png')
-            plot_vascular_map(slrda.a_hat_img[n], display_mode='z',
-                              cut_coords=np.linspace(-30, 60, 5),
-                              filename=filename, verbose=True)
+    vmax = np.max([np.max(slrda.a_hat[n]) for n in range(n_subjects)])
+    for n in range(n_subjects):
+        filename = os.path.join(plot_dir, f'vascular_maps_{n}.png')
+        plotting.plot_vascular_map(a_hat_img[n], display_mode='z',
+                                   cut_coords=np.linspace(-30, 60, 5),
+                                   filename=filename, vmax=vmax, verbose=True)
 
 
 
@@ -298,6 +278,8 @@ Plot vascular maps
 
  .. code-block:: none
 
+    /home/hcherkaoui/src/dev/nilearn/nilearn/plotting/img_plotting.py:341: FutureWarning: Default resolution of the MNI template will change from 2mm to 1mm in version 0.10.0
+      anat_img = load_mni152_template()
     Saving plot under 'plots/vascular_maps_0.png'
     Saving plot under 'plots/vascular_maps_1.png'
     Saving plot under 'plots/vascular_maps_2.png'
@@ -309,7 +291,7 @@ Plot vascular maps
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  20.755 seconds)
+   **Total running time of the script:** ( 0 minutes  25.835 seconds)
 
 
 .. _sphx_glr_download_auto_examples_02_real_fmri_data_plot_adhd_rest.py:
