@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_02_real_fmri_data_sg_execution_times:
+
+Computation times
+=================
+**00:26.958** total execution time for **auto_examples_02_real_fmri_data** files:
+
++-------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_02_real_fmri_data_plot_adhd_rest.py` (``plot_adhd_rest.py``) | 00:26.958 | 0.0 MB |
++-------------------------------------------------------------------------------------------+-----------+--------+
