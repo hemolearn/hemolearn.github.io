@@ -1,0 +1,40 @@
+hemolearn.BDA
+=============
+
+.. currentmodule:: hemolearn
+
+.. autoclass:: BDA
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BDA.__init__
+      ~BDA.fit
+      ~BDA.fit_transform
+      ~BDA.transform
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BDA.Dz_hat
+      ~BDA.a_hat
+      ~BDA.a_hat_img
+      ~BDA.lobj
+      ~BDA.ltime
+      ~BDA.u_hat
+      ~BDA.u_hat_img
+      ~BDA.v_hat
+      ~BDA.v_init
+      ~BDA.z_hat
+   
+   
