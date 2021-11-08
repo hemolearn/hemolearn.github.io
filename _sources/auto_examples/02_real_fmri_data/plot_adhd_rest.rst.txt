@@ -96,7 +96,7 @@ Fetch fMRI subjects
 
  .. code-block:: none
 
-    /home/hcherkaoui/src/dev/nilearn/nilearn/datasets/func.py:241: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+    /home/hcherkaoui/.local/lib/python3.6/site-packages/nilearn/datasets/func.py:241: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
       dtype=None)
 
 
@@ -278,7 +278,7 @@ Plot vascular maps
 
  .. code-block:: none
 
-    /home/hcherkaoui/src/dev/nilearn/nilearn/plotting/img_plotting.py:341: FutureWarning: Default resolution of the MNI template will change from 2mm to 1mm in version 0.10.0
+    /home/hcherkaoui/.local/lib/python3.6/site-packages/nilearn/plotting/img_plotting.py:341: FutureWarning: Default resolution of the MNI template will change from 2mm to 1mm in version 0.10.0
       anat_img = load_mni152_template()
     Saving plot under 'plots/vascular_maps_0.png'
     Saving plot under 'plots/vascular_maps_1.png'
@@ -291,7 +291,7 @@ Plot vascular maps
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  25.524 seconds)
+   **Total running time of the script:** ( 0 minutes  25.358 seconds)
 
 
 .. _sphx_glr_download_auto_examples_02_real_fmri_data_plot_adhd_rest.py:

@@ -5,8 +5,8 @@
 
 Computation times
 =================
-**00:25.524** total execution time for **auto_examples_02_real_fmri_data** files:
+**00:25.358** total execution time for **auto_examples_02_real_fmri_data** files:
 
 +-------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_02_real_fmri_data_plot_adhd_rest.py` (``plot_adhd_rest.py``) | 00:25.524 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_02_real_fmri_data_plot_adhd_rest.py` (``plot_adhd_rest.py``) | 00:25.358 | 0.0 MB |
 +-------------------------------------------------------------------------------------------+-----------+--------+
